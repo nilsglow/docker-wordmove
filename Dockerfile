@@ -53,6 +53,11 @@ RUN wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
+RUN apt-get update && apt-get upgrade -y --no-install-recommends \
+  && apt-get install -y --no-install-recommends \
+    php${PHP_VERSION}-xml \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/*
 
 RUN gem install wordmove --version 5.2.2
 
