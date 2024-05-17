@@ -11,6 +11,8 @@ LABEL maintainers.2="Alessandro Fazzi <alessandro.fazzi@welaika.com>"
 ENV DEBIAN_FRONTEND noninteractive
 ENV WORDMOVE_WORKDIR /html
 
+ARG PHP_VERSION=8.2
+
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 COPY mount-ssh.sh /bin/mount-ssh.sh
@@ -47,7 +49,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends locales \
 # hadolint ignore=DL3008
 RUN wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg \
   && echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/php.list \
-  && apt-get update && apt-get -y --no-install-recommends install php7.4-cli php7.4-mysql \
+  && apt-get update && apt-get -y --no-install-recommends install php${PHP_VERSION}-cli php${PHP_VERSION}-mysql \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
