@@ -59,6 +59,8 @@ RUN apt-get update && apt-get upgrade -y --no-install-recommends \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
+RUN gem install ed25519 bcrypt_pbkdf
+
 RUN gem install wordmove --version 5.2.2
 
 RUN wget -O /usr/local/bin/wp -L https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
