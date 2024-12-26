@@ -55,6 +55,8 @@ RUN wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
 
 RUN gem install ed25519 bcrypt_pbkdf
 
+RUN gem install zeitwerk --version 2.6.18
+
 RUN gem install wordmove --version 5.2.2
 
 RUN wget -O /usr/local/bin/wp -L https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
