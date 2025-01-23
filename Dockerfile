@@ -73,8 +73,8 @@ ENV WORDMOVE_WORKDIR /var/www/html
 
 WORKDIR ${WORDMOVE_WORKDIR}
 
-# we need a user with id 1000
-RUN groupadd --gid 1000 wordmove
-RUN useradd --uid 1000 --gid wordmove --create-home --shell /bin/bash wordmove
-
-USER wordmove
+# we need do NOT create a user with ID 1000 anymore, that should happen at a later stage.
+# RUN groupadd --gid 1000 wordmove
+# RUN useradd --uid 1000 --gid wordmove --create-home --shell /bin/bash wordmove
+#
+# USER wordmove
